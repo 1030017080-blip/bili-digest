@@ -1,0 +1,157 @@
+/**
+ * Bili Digest — in-page embedded panel + below-video toolbar.
+ * Injected into https://www.bilibili.com/* pages via content_scripts.
+ */
+
+/* ------------------------------------------------------------------
+ * Embedded panel (floats over Bilibili's right recommendation rail)
+ * ------------------------------------------------------------------ */
+#boc-panel-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 460px;
+  max-width: 92vw;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.22);
+  background: #ffffff;
+  flex-direction: column;
+  z-index: 2147483000;
+  font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+}
+
+#boc-panel-wrap[style*="display: flex"] {
+  animation: bocPanelIn 0.18s ease-out;
+}
+
+@keyframes bocPanelIn {
+  from { transform: translateX(18px); opacity: 0.6; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+#boc-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 14px 0 18px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e5e7;
+  flex: 0 0 auto;
+}
+
+#boc-panel-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fb7299;
+  letter-spacing: 0.3px;
+}
+
+#boc-panel-close {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #61666d;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+#boc-panel-close:hover {
+  background: #f1f2f3;
+  color: #18191c;
+}
+
+#boc-panel-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+
+/* ------------------------------------------------------------------
+ * In-page overlay panel (covers Bilibili right recommendation rail)
+ * ------------------------------------------------------------------ */
+#boc-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 460px;
+  max-width: 92vw;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.22);
+  font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  transform: translateX(100%);
+  opacity: 0.6;
+  transition: transform 0.28s ease-out, opacity 0.28s ease-out;
+  pointer-events: auto;
+}
+
+#boc-overlay.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#boc-overlay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 14px 0 18px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e5e7;
+  flex: 0 0 auto;
+}
+
+#boc-overlay-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fb7299;
+  letter-spacing: 0.3px;
+}
+
+#boc-overlay-close {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #61666d;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+#boc-overlay-close:hover {
+  background: #f1f2f3;
+  color: #18191c;
+}
+
+#boc-overlay-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  border: none;
+}

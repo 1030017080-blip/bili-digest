@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bili Digest Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="settings-shell">
+      <header>
+        <div class="settings-heading-row">
+          <div class="eyebrow">Bili Digest</div>
+          <div
+            class="language-switch"
+            role="group"
+            aria-label="Interface language"
+            data-i18n-aria-label="languageGroupLabel"
+          >
+            <button
+              class="language-option"
+              type="button"
+              data-language="en"
+              aria-pressed="false"
+            >
+              English
+            </button>
+            <button
+              class="language-option"
+              type="button"
+              data-language="zh-CN"
+              aria-pressed="true"
+            >
+              中文
+            </button>
+          </div>
+        </div>
+        <h1 data-i18n="heading">Bring your own API keys</h1>
+        <p class="lede" data-i18n="lede">
+          Keys stay in this Chrome profile and are sent only to DeepSeek. This
+          open-source extension has no developer server or analytics.
+        </p>
+      </header>
+
+      <form id="settingsForm">
+        <section class="card">
+          <h2 data-i18n="aiProvider">AI provider</h2>
+          <div
+            class="provider-summary"
+            aria-label="Supported AI provider"
+            data-i18n-aria-label="providerSummaryLabel"
+          >
+            <span class="provider-name">DeepSeek V4 Flash</span>
+            <span class="provider-badge" data-i18n="providerBadge"
+              >Supported in this version</span
+            >
+          </div>
+
+          <label for="aiApiKey" data-i18n="deepseekApiKeyLabel"
+            >DeepSeek API key</label
+          >
+          <input
+            id="aiApiKey"
+            name="aiApiKey"
+            type="password"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Paste your DeepSeek key"
+          />
+          <p class="help">
+            <span data-i18n="deepseekHelp"
+              >Bili Digest uses DeepSeek for overviews,
+              explanations, translation, and note polishing.</span
+            >
+            <a
+              href="https://platform.deepseek.com/api_keys"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="deepseekLink"
+              >Create a DeepSeek API key</a
+            ><span data-i18n="deepseekHelpSuffix">.</span>
+          </p>
+          <div class="privacy-note" data-i18n="privacyNote">
+            When you use AI features, DeepSeek receives the video transcript
+            and relevant video context. Review DeepSeek's terms and pricing
+            before saving.
+          </div>
+          <details class="card">
+            <summary data-i18n="advancedTitle">Advanced (optional)</summary>
+            <label for="aiBaseUrl" data-i18n="aiBaseUrlLabel"
+              >API base URL</label
+            >
+            <input
+              id="aiBaseUrl"
+              name="aiBaseUrl"
+              type="url"
+              inputmode="url"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="https://api.deepseek.com"
+            />
+            <p class="help">
+              <span data-i18n="aiBaseUrlHelp"
+                >Defaults to DeepSeek. Change this only if you use an OpenAI-compatible
+                endpoint.</span
+              >
+            </p>
+            <label for="aiModel" data-i18n="aiModelLabel">Model</label>
+            <input
+              id="aiModel"
+              name="aiModel"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="deepseek-v4-flash"
+            />
+            <p class="help">
+              <span data-i18n="aiModelHelp"
+                >Defaults to DeepSeek V4 Flash. Override to use a different model.</span
+              >
+            </p>
+          </details>
+        </section>
+
+        <section class="card">
+          <h2 data-i18n="obsidianTitle">Obsidian export (Local REST API)</h2>
+
+          <label for="obsidianUrl" data-i18n="obsidianUrlLabel"
+            >Obsidian API URL</label
+          >
+          <input
+            id="obsidianUrl"
+            name="obsidianUrl"
+            type="url"
+            inputmode="url"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="http://127.0.0.1:27124"
+          />
+          <p class="help">
+            <span data-i18n="obsidianUrlHelp"
+              >Install the Obsidian plugin &quot;Local REST API&quot; and enable
+              it. The default endpoint is http://127.0.0.1:27124.</span
+            >
+          </p>
+
+          <label for="obsidianApiKey" data-i18n="obsidianApiKeyLabel"
+            >Obsidian API key</label
+          >
+          <input
+            id="obsidianApiKey"
+            name="obsidianApiKey"
+            type="password"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="Paste your Local REST API key"
+          />
+          <p class="help">
+            <span data-i18n="obsidianApiKeyHelp"
+              >Found in the Local REST API plugin settings (default
+              header:&nbsp;Authorization Bearer).</span
+            >
+          </p>
+
+          <label for="obsidianVaultFolder" data-i18n="obsidianFolderLabel"
+            >Vault folder (optional)</label
+          >
+          <input
+            id="obsidianVaultFolder"
+            name="obsidianVaultFolder"
+            type="text"
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="BiliDigest"
+          />
+          <p class="help">
+            <span data-i18n="obsidianFolderHelp"
+              >Relative path inside your vault where notes are written. Leave
+              empty to write to the vault root.</span
+            >
+          </p>
+        </section>
+
+        <div class="form-actions">
+          <button class="primary" type="submit" data-i18n="saveSettings">
+            Save settings
+          </button>
+          <span id="saveStatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <section class="card data-card">
+        <h2 data-i18n="localData">Local data</h2>
+        <p class="help" data-i18n="localDataHelp">
+          Digests, translations, and notes are stored only in this Chrome
+          profile. You can remove them at any time.
+        </p>
+        <div class="data-actions">
+          <button id="clearCacheBtn" type="button" data-i18n="clearCache">
+            Clear cached digests
+          </button>
+          <button id="clearNotesBtn" type="button" data-i18n="deleteNotes">
+            Delete all notes
+          </button>
+          <button
+            id="resetBtn"
+            class="danger"
+            type="button"
+            data-i18n="resetData"
+          >
+            Reset extension data
+          </button>
+        </div>
+        <span id="dataStatus" role="status" aria-live="polite"></span>
+      </section>
+
+      <footer data-i18n-html="footer">
+        Read <a href="PRIVACY.md" target="_blank">PRIVACY.md</a> in the
+        repository for the complete data-flow description.
+      </footer>
+    </main>
+
+    <script src="settings.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
