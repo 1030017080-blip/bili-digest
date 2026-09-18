@@ -12,7 +12,7 @@ const YTD_OPTIONS = (() => {
         "Keys stay in this Chrome profile and are sent only to DeepSeek. This open-source extension has no developer server or analytics.",
       aiProvider: "AI provider",
       providerSummaryLabel: "Supported AI provider",
-      providerBadge: "Supported in this version",
+      providerBadge: "Default model",
       deepseekApiKeyLabel: "DeepSeek API key",
       deepseekHelp:
         "Bili Digest uses DeepSeek V4 Flash for overviews, explanations, translation, and note polishing. ",
@@ -71,7 +71,7 @@ const YTD_OPTIONS = (() => {
         "密钥仅保存在当前 Chrome 个人资料中，只会发送给 DeepSeek。本开源扩展没有开发者服务器，也不使用分析服务。",
       aiProvider: "AI 服务",
       providerSummaryLabel: "支持的 AI 服务",
-      providerBadge: "当前版本支持",
+      providerBadge: "默认模型",
       deepseekApiKeyLabel: "DeepSeek API 密钥",
       deepseekHelp:
         "Bili Digest 使用 DeepSeek V4 Flash 生成概览、解释内容、翻译字幕和润色笔记。",
@@ -336,6 +336,11 @@ const YTD_OPTIONS = (() => {
           settings.aiBaseUrl || settingsApi.DEFAULTS.aiBaseUrl;
         aiModelInput.value =
           settings.aiModel || settingsApi.DEFAULTS.aiModel;
+        const providerNameEl = doc.getElementById("provider-name");
+        if (providerNameEl) {
+          providerNameEl.textContent =
+            aiModelInput.value || settingsApi.DEFAULTS.aiModel;
+        }
         obsidianUrlInput.value =
           settings.obsidianUrl ||
           settingsApi.DEFAULTS.obsidianUrl;
