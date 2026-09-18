@@ -29,39 +29,7 @@ Bili Digest 是自带密钥（Bring Your Own Key）的本地项目，从 GitHub 
 
 > 全程不需要注册本扩展的任何账户——密钥和笔记都存在你自己的浏览器与电脑里。
 
-### 2. 下载并安装 Obsidian（可选，但强烈推荐）
-
-Obsidian 是本地 Markdown 笔记软件，Bili Digest 可以把字幕和笔记直接写进你的笔记库。
-
-1. 打开官网 <https://obsidian.md>，点击 **Download** 下载并安装（Windows 选 Windows 版本，macOS/Linux 同理）。
-2. 首次运行会让你**新建一个 Vault（仓库/笔记库）**。取个名字，选一个你放笔记的文件夹，点「创建」。这一步只是建一个普通文件夹，不用害怕，之后可以随时换。
-3. 之后打开 Obsidian 就能看到你的笔记库了。
-
-> 备注：Obsidian 是本地软件，笔记默认只存在你的电脑里，不上传云。Bili Digest 也只是把内容写入你本地这个库里。
-
-### 3. 给 Obsidian 装「Local REST API」插件（配合导出功能）
-
-Bili Digest 是通过这个插件把内容写进 Obsidian 的，需要装一次：
-
-1. 在 Obsidian 里点左下角 **设置（Settings）** → 左侧 **第三方插件 / 社区插件（Community plugins）**。
-2. 如果提示「限制模式（Restricted mode）」已开启，点**开启**并把限制模式关掉（Obsidian 关闭安全模式后才能在官方社区安装插件）。
-3. 点 **浏览（Browse）**，在搜索框输入插件名 **`Local REST API`**（作者 `coddingtonbear`）。
-4. 找到后点 **安装（Install）**，装完再点 **启用（Enable）**。
-5. 回到该插件的设置页（Community plugins → Local REST API → 齿轮），确认 **API Port（端口）** 是 `27124`（默认这样即可）。
-6. 找到 **API Key / 启用 API** 相关设置，打开后 Obsidian 会显示一串密钥（Bearer Token）。**把这串密钥复制出来**，后面要填进 Bili Digest 设置。
-
-> 这一步只影响「把导出内容写进 Obsidian 笔记库」的功能。暂时不想用 Obsidian 也可以先跳过，等想导出时再回来配。
-
-### 4. 获取 DeepSeek API 密钥（AI 功能必需）
-
-DeepSeek 的 AI 功能（概览、翻译、解释、笔记润色）都走它，需要一个 API 密钥：
-
-1. 打开 <https://platform.deepseek.com>，注册/登录。
-2. 左侧找到 **API 密钥**（或 `API Keys`）页面，点 **创建 API Key**。
-3. 会生成一串以 `sk-` 开头的密钥，**复制保存**（关闭后通常不再显示全文）。
-4. 如果需要，先在 **充值/计费** 页面充一点额度（AI 按用量计费，很便宜，自己决定充多少）。
-
-### 5. 把 Bili Digest 装进浏览器（加载已解压扩展）
+### 2. 把 Bili Digest 装进浏览器（加载已解压扩展）
 
 Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程序」方式安装：
 
@@ -73,9 +41,42 @@ Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程
 
 > 用「已解压扩展」方式安装不会自动更新。之后源码更新时，回到 `chrome://extensions`，在 Bili Digest 卡片上点 **「重新加载」**，再刷新一下打开的 B站视频页即可。移动或删除源码文件夹会导致扩展失效，需要重新从新位置加载。
 
-### 6. 打开设置页填写两个密钥
+### 3. 打开设置页，看看需要填什么
 
-在浏览器工具栏点 Bili Digest 图标旁的菜单，或直接右键图标打开 **设置/选项**（侧边面板右上角也有「设置」按钮）。会看到设置页，把前面复制的东西填进去：
+装好后先打开设置页认识一下界面——核心就是**两个 API Key**：
+
+1. 在浏览器工具栏右键 Bili Digest 图标 → **选项**；或打开侧边面板后点右上角「设置」按钮。
+2. 你会看到设置页分成两区：
+   - **AI 服务**：需要 DeepSeek API 密钥（AI 功能必需）。
+   - **Obsidian 导出**：需要 Obsidian API 密钥（可选，用于导出笔记）。
+3. 先别急着填，下面两步去拿这两个密钥（DeepSeek 必须；Obsidian 想用导出才要）。
+
+> 本扩展**没有自己的账户**——所有密钥都只存在你自己的浏览器与电脑里，不会被上传到任何 Bili Digest 所属的服务器。
+
+### 4. 获取 DeepSeek API 密钥（AI 功能必需）
+
+DeepSeek 的 AI 功能（概览、翻译、解释、笔记润色）都走它，需要一个 API 密钥：
+
+1. 打开 <https://platform.deepseek.com>，注册/登录。
+2. 左侧找到 **API 密钥**（或 `API Keys`）页面，点 **创建 API Key**。
+3. 会生成一串以 `sk-` 开头的密钥，**复制保存**（关闭后通常不再显示全文）。
+4. 如果需要，先在 **充值/计费** 页面充一点额度（AI 按用量计费，很便宜，自己决定充多少）。
+
+### 5. 拿到 Obsidian 密钥（可选，用于导出）
+
+Obsidian 是本地 Markdown 笔记软件，Bili Digest 通过它的「Local REST API」插件把字幕和笔记写进你的笔记库（想直接在本扩展里看字幕/记笔记，可先跳过）：
+
+1. 打开官网 <https://obsidian.md>，点击 **Download** 下载并安装（Windows 选 Windows 版本，macOS/Linux 同理）。
+2. 首次运行会让你**新建一个 Vault（仓库/笔记库）**。取个名字，选一个放笔记的文件夹，点「创建」。
+3. 在 Obsidian 里点左下角 **设置（Settings）** → **第三方插件 / 社区插件（Community plugins）**，把 **限制模式（Restricted mode）** 关掉。
+4. 点 **浏览（Browse）**，搜索安装插件 **`Local REST API`**（作者 `coddingtonbear`），装完点 **启用（Enable）**。
+5. 回到该插件设置页（Community plugins → Local REST API → 齿轮），确认 **API Port** 是 `27124`，打开 **API Key / 启用 API**，Obsidian 会显示一串 Bearer Token——**把这串密钥复制出来**。
+
+> Obsidian 是本地软件，笔记默认只存在你的电脑里，不上传云。Bili Digest 也只是把内容写入你本地这个库里。暂时不想用 Obsidian 可以跳过，等想导出时再回来配。
+
+### 6. 回到设置页，把两个密钥填进去
+
+再次打开设置页（工具栏右键图标 → 选项），把上面两步复制的密钥填进去：
 
 1. **AI 区**：
    - **DeepSeek API 密钥**：粘贴第 4 步的 `sk-...` 密钥。
@@ -83,10 +84,10 @@ Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程
    - **模型**：默认是 `deepseek-v4-flash`（DeepSeek V4 Flash）。**这不是写死的**——如果你有其它 OpenAI 兼容模型，直接把模型名填进这个输入框即可，接口也能改成其它兼容端点。
 2. **Obsidian 区（可选）**：
    - **Obsidian API 地址**：默认 `http://127.0.0.1:27124`，一般不用改。
-   - **Obsidian API 密钥**：粘贴第 3 步里 Local REST API 插件生成的那串密钥。
+   - **Obsidian API 密钥**：粘贴第 5 步里 Local REST API 插件生成的那串密钥。
    - **库内文件夹（可选）**：导出的笔记在 Obsidian 库内的相对路径，留空则写入库根目录。
 3. 点 **保存设置**。至少填了 DeepSeek 密钥或 Obsidian 其一即可保存。
-4. 保存后请**重新加载已解压扩展**（见第 5 步），让新设置生效。
+4. 保存后请**重新加载已解压扩展**（见第 2 步），让新设置生效。
 
 ### 7. 打开一个B站视频，试一试
 
