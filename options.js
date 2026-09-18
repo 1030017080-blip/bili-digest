@@ -47,7 +47,7 @@ const YTD_OPTIONS = (() => {
       obsidianTitle: "Obsidian export (Local REST API)",
       obsidianUrlLabel: "Obsidian API URL",
       obsidianUrlHelp:
-        "Install the Obsidian plugin \"Local REST API\" and enable it. The default endpoint is http://127.0.0.1:27124.",
+        "Install the Obsidian plugin \"Local REST API\" and enable it. The default endpoint is http://127.0.0.1:27123.",
       obsidianApiKeyLabel: "Obsidian API key",
       obsidianApiKeyHelp:
         "Found in the Local REST API plugin settings (Authorization Bearer header).",
@@ -106,7 +106,7 @@ const YTD_OPTIONS = (() => {
       obsidianTitle: "Obsidian 导出（Local REST API）",
       obsidianUrlLabel: "Obsidian API 地址",
       obsidianUrlHelp:
-        "请安装并在 Obsidian 中启用插件 \"Local REST API\"。默认地址为 http://127.0.0.1:27124。",
+        "请安装并在 Obsidian 中启用插件 \"Local REST API\"。默认地址为 http://127.0.0.1:27123。",
       obsidianApiKeyLabel: "Obsidian API 密钥",
       obsidianApiKeyHelp: "可在 Local REST API 插件设置中找到（Authorization Bearer 请求头）。",
       obsidianFolderLabel: "库内文件夹（可选）",

@@ -8,7 +8,7 @@ Bili Digest 是一个开源的 Chromium 浏览器扩展（B站字幕插件）。
 - 多字幕轨选择，字幕跟随播放高亮当前句。
 - 用 AI 生成全片章节与精选引言，快速理解整段视频。
 - 选中字幕即可翻译或解释，保存的笔记自动润色。
-- 悬停视频或按快捷键 `N` 保存带时间戳的笔记。
+
 - 一键把字幕、概览、章节和笔记导出为 Obsidian Markdown。
 
 Bili Digest 是自带密钥（Bring Your Own Key）的本地项目，从 GitHub 下载安装，**不在 Chrome 应用商店上架**，不建账户、不运行开发者服务器。
@@ -33,11 +33,11 @@ Bili Digest 是自带密钥（Bring Your Own Key）的本地项目，从 GitHub 
 
 Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程序」方式安装：
 
-1. 在 GitHub 仓库页点 **Code → Download ZIP** 下载源码，解压到一个**永久文件夹**（确保里面有 `manifest.json`），解压完可以把这个文件夹改名 `bili-digest`。
-2. 在 Chrome 地址栏打开 `chrome://extensions`。
+1. 在 GitHub 仓库页点 **Code → Download ZIP** 下载源码，解压到一个**永久文件夹**![alt text](3132f5ec50fe0c86bd3f13dae7d090a1.png)![alt text](3f1a02edea1bd5e38474bdae6684f483.png)![alt text](8d2a3274ab40dcd485555c95eb7bd46a.png)
+2. 在 Chrome 地址栏打开 `chrome://extensions`。![alt text](50e43f9d4edd885fc9f6f83690e56b26.png)
 3. 打开右上角的 **「开发者模式」** 开关。
-4. 点击 **「加载已解压的扩展程序」**。
-5. 选中刚才那个包含 `manifest.json` 的文件夹。
+4. 点击 **「加载已解压的扩展程序」**。![alt text](3fd15e1dfe65a6938d7a6b08ae4dfdfb.png)
+5. 选中刚才那个文件夹。![alt text](150acdd06a8a94a035f8d8be9691d4e5.png)
 
 > 用「已解压扩展」方式安装不会自动更新。之后源码更新时，回到 `chrome://extensions`，在 Bili Digest 卡片上点 **「重新加载」**，再刷新一下打开的 B站视频页即可。移动或删除源码文件夹会导致扩展失效，需要重新从新位置加载。
 
@@ -49,57 +49,59 @@ Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程
 2. 你会看到设置页分成两区：
    - **AI 服务**：需要 DeepSeek API 密钥（AI 功能必需）。
    - **Obsidian 导出**：需要 Obsidian API 密钥（可选，用于导出笔记）。
-3. 先别急着填，下面两步去拿这两个密钥（DeepSeek 必须；Obsidian 想用导出才要）。
+3. 先别急着填，下面两步去拿这两个密钥（DeepSeek 必须；Obsidian 想用导出才要）。![alt text](image.png)
 
 > 本扩展**没有自己的账户**——所有密钥都只存在你自己的浏览器与电脑里，不会被上传到任何 Bili Digest 所属的服务器。
 
 ### 4. 获取 DeepSeek API 密钥（AI 功能必需）
 
 DeepSeek 的 AI 功能（概览、翻译、解释、笔记润色）都走它，需要一个 API 密钥：
-
-1. 打开 <https://platform.deepseek.com>，注册/登录。
+1. 打开 <https://platform.deepseek.com>，注册/登录。![alt text](cbf6146fc4946cdf009e6087b25ac774.png)
 2. 左侧找到 **API 密钥**（或 `API Keys`）页面，点 **创建 API Key**。
 3. 会生成一串以 `sk-` 开头的密钥，**复制保存**（关闭后通常不再显示全文）。
 4. 如果需要，先在 **充值/计费** 页面充一点额度（AI 按用量计费，很便宜，自己决定充多少）。
-
-### 5. 拿到 Obsidian 密钥（可选，用于导出）
-
-Obsidian 是本地 Markdown 笔记软件，Bili Digest 通过它的「Local REST API」插件把字幕和笔记写进你的笔记库（想直接在本扩展里看字幕/记笔记，可先跳过）：
-
-1. 打开官网 <https://obsidian.md>，点击 **Download** 下载并安装（Windows 选 Windows 版本，macOS/Linux 同理）。
-2. 首次运行会让你**新建一个 Vault（仓库/笔记库）**。取个名字，选一个放笔记的文件夹，点「创建」。
-3. 在 Obsidian 里点左下角 **设置（Settings）** → **第三方插件 / 社区插件（Community plugins）**，把 **限制模式（Restricted mode）** 关掉。
-4. 点 **浏览（Browse）**，搜索安装插件 **`Local REST API`**（作者 `coddingtonbear`），装完点 **启用（Enable）**。
-5. 回到该插件设置页（Community plugins → Local REST API → 齿轮），确认 **API Port** 是 `27124`，打开 **API Key / 启用 API**，Obsidian 会显示一串 Bearer Token——**把这串密钥复制出来**。
-
-> Obsidian 是本地软件，笔记默认只存在你的电脑里，不上传云。Bili Digest 也只是把内容写入你本地这个库里。暂时不想用 Obsidian 可以跳过，等想导出时再回来配。
-
-### 6. 回到设置页，把两个密钥填进去
-
-再次打开设置页（工具栏右键图标 → 选项），把上面两步复制的密钥填进去：
-
-1. **AI 区**：
+5.   **AI 区**：
    - **DeepSeek API 密钥**：粘贴第 4 步的 `sk-...` 密钥。
    - （可选）**API 地址**：默认 `https://api.deepseek.com`，一般不用改。
    - **模型**：默认是 `deepseek-v4-flash`（DeepSeek V4 Flash）。**这不是写死的**——如果你有其它 OpenAI 兼容模型，直接把模型名填进这个输入框即可，接口也能改成其它兼容端点。
-2. **Obsidian 区（可选）**：
-   - **Obsidian API 地址**：默认 `http://127.0.0.1:27124`，一般不用改。
+   - 完成后点击下方保存设置![alt text](image-1.png)
+
+
+### 5. 拿到 Obsidian 密钥（用于导出）
+
+Obsidian 是本地 Markdown 笔记软件，Bili Digest 通过它的「Local REST API」插件把字幕和笔记写进你的笔记库（想直接在本扩展里看字幕/记笔记，可先跳过）：
+
+1. 打开官网 <https://obsidian.md>，点击 **Download** 下载并安装（Windows 选 Windows 版本，macOS/Linux 同理）。（百度云盘链接：[（Win）Obsidian‑1.13.7.exe等2个文件](https://pan.baidu.com/s/1r59hk7yZREAf9jkaLmKGJw)，提取码：`sh56`
+
+
+2. 首次运行会让你**新建一个 Vault（仓库/笔记库）**。取个名字，选一个放笔记的文件夹，点「创建」。
+3. 在 Obsidian 里点左下角 **设置（Settings）** → **第三方插件 / 社区插件（Community plugins）**，把 **限制模式（Restricted mode）** 关掉。![alt text](image-2.png)
+4. 点 **浏览（Browse）**，搜索安装插件 **`Local REST API`**（作者 `coddingtonbear`），装完点 **启用（Enable）**。![alt text](image-3.png)
+5. 回到该插件设置页（Community plugins → Local REST API → 齿轮），确认 **API Port** 是 `27124`，打开 **API Key / 启用 API**，Obsidian 会显示一串 Bearer Token——**把这串密钥复制出来**。![alt text](image-11.png)
+
+> Obsidian 是本地软件，笔记默认只存在你的电脑里，不上传云。Bili Digest 也只是把内容写入你本地这个库里。
+6. **Obsidian 区**：
+   - **Obsidian API 地址**：默认 `http://127.0.0.1:27123`，一般不用改。
    - **Obsidian API 密钥**：粘贴第 5 步里 Local REST API 插件生成的那串密钥。
    - **库内文件夹（可选）**：导出的笔记在 Obsidian 库内的相对路径，留空则写入库根目录。
-3. 点 **保存设置**。至少填了 DeepSeek 密钥或 Obsidian 其一即可保存。
-4. 保存后请**重新加载已解压扩展**（见第 2 步），让新设置生效。
+   - ![alt text](image-5.png)
+1. 点 **保存设置**。
+2. 保存后请**重新加载已解压扩展**（见第 2 步），让新设置生效。![alt text](image-6.png)
 
-### 7. 打开一个B站视频，试一试
+
+
+
+### 6. 打开一个B站视频，试一试
 
 1. 打开任意一个 B站视频页（URL 是 `https://www.bilibili.com/video/BV...`）。
-2. 点击播放器下方工具栏的 **「Bili Digest」** 按钮打开页面内面板（或点浏览器工具栏图标打开侧边面板）。
+2. 点击播放器下方工具栏的 **「Bili Digest」** 按钮打开页面内面板（或点浏览器工具栏图标打开侧边面板）。![alt text](image-7.png)
 3. 在 **「字幕」** 标签看带时间戳的完整字幕；视频有多条轨道时可用下拉框切换。
 4. 播放视频，当前句会自动高亮。
-5. 点到想记的地方，按快捷键 `N`（或点「记笔记」按钮）保存带时间戳的笔记。
-6. 打开 **「概览」** 标签，等 AI 生成章节与精选引言。
-7. 需要存档时点 **「导出 Obsidian」**，字幕与笔记就会写入你的 Obsidian 库。
+5. 点到想记的地方，按快捷键 `N`（或点「记笔记」按钮）保存带时间戳的笔记。![alt text](image-8.png)
+6. 打开 **「概览」** 标签，等 AI 生成章节与精选引言。![alt text](image-9.png)
+7. 需要存档时点 **「导出 Obsidian」**，字幕与笔记就会写入你的 Obsidian 库。![alt text](image-10.png)
 
-完成这 7 步，你就已经上手了。下面还有更细的功能说明。
+完成这 6 步，你就已经上手了。下面还有更细的功能说明。
 
 ---
 
@@ -130,7 +132,7 @@ Obsidian 是本地 Markdown 笔记软件，Bili Digest 通过它的「Local REST
 ### Obsidian 导出（Local REST API）
 
 - 在 Obsidian 中安装并启用「Local REST API」插件（步骤见上面「零基础教程」第 3 步）。
-- **Obsidian API 地址**：默认 `http://127.0.0.1:27124`。
+- **Obsidian API 地址**：默认 `http://127.0.0.1:27123`。
 - **Obsidian API 密钥**：在 Local REST API 插件设置中获取（即 Authorization Bearer 请求头）。
 - **库内文件夹（可选）**：笔记在库内写入的相对路径，留空则写入库根目录。
 

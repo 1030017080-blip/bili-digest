@@ -11,7 +11,7 @@ var YTD_SETTINGS = (() => {
     aiApiKey: "",
     aiBaseUrl: "https://api.deepseek.com",
     aiModel: "deepseek-v4-flash",
-    obsidianUrl: "http://127.0.0.1:27124",
+    obsidianUrl: "http://127.0.0.1:27123",
     obsidianApiKey: "",
     obsidianVaultFolder: "",
   });

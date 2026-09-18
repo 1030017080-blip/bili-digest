@@ -82,7 +82,7 @@ Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程
    - （可选）**API 地址**：默认 `https://api.deepseek.com`，一般不用改。
    - **模型**：默认是 `deepseek-v4-flash`（DeepSeek V4 Flash）。**这不是写死的**——如果你有其它 OpenAI 兼容模型，直接把模型名填进这个输入框即可，接口也能改成其它兼容端点。
 2. **Obsidian 区（可选）**：
-   - **Obsidian API 地址**：默认 `http://127.0.0.1:27124`，一般不用改。
+   - **Obsidian API 地址**：默认 `http://127.0.0.1:27123`，一般不用改。
    - **Obsidian API 密钥**：粘贴第 3 步里 Local REST API 插件生成的那串密钥。
    - **库内文件夹（可选）**：导出的笔记在 Obsidian 库内的相对路径，留空则写入库根目录。
 3. 点 **保存设置**。至少填了 DeepSeek 密钥或 Obsidian 其一即可保存。
@@ -129,7 +129,7 @@ Bili Digest 是自安装项目，通过 Chrome 的「加载已解压的扩展程
 ### Obsidian 导出（Local REST API）
 
 - 在 Obsidian 中安装并启用「Local REST API」插件（步骤见上面「零基础教程」第 3 步）。
-- **Obsidian API 地址**：默认 `http://127.0.0.1:27124`。
+- **Obsidian API 地址**：默认 `http://127.0.0.1:27123`。
 - **Obsidian API 密钥**：在 Local REST API 插件设置中获取（即 Authorization Bearer 请求头）。
 - **库内文件夹（可选）**：笔记在库内写入的相对路径，留空则写入库根目录。
 

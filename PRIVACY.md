@@ -47,7 +47,7 @@ Bili Digest 的默认 AI 服务是 DeepSeek。当你使用 AI 功能时，扩展
 
 ### Obsidian（Local REST API，仅写本地）
 
-当你在设置页配置了 Obsidian Local REST API（默认地址 `http://127.0.0.1:27124`）并主动导出时，Bili Digest 会把生成好的 Markdown 文档通过 `PUT /vault/...` 写入你自己的 **Obsidian 库**。导出只发生在你点击导出时，写入目标始终是本机 Obsidian 库，不会发往任何远程服务器。
+当你在设置页配置了 Obsidian Local REST API（默认地址 `http://127.0.0.1:27123`）并主动导出时，Bili Digest 会把生成好的 Markdown 文档通过 `PUT /vault/...` 写入你自己的 **Obsidian 库**。导出只发生在你点击导出时，写入目标始终是本机 Obsidian 库，不会发往任何远程服务器。
 
 ## 本地存储与保留
 
